@@ -1,0 +1,32 @@
+name: Go cicd
+on:
+  push:
+    branches: [ feature/sj ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  build:   
+    runs-on: self-hosted
+    steps:  
+    - name: build_push_tag of feature/sj
+      if: contains('refs/heads/feature/sj',github.ref)
+      env:      
+       PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+       USERNAME: ${{ secrets.DOCKER_USERNAME }}  
+      run: |
+            
+             docker login -u $USERNAME -p $PASSWORD
+             docker build -t sugamdocker35/secretproj:${{ github.sha }} -f Dockerfile .  
+             docker push sugamdocker35/secretproj:${{ github.sha }} 
+  deploy:
+    runs-on: self-hosted
+    steps:
+    - name: deploy app
+      if: contains('refs/heads/main',github.ref)
+      env:
+       PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+       USERNAME: ${{ secrets.DOCKER_USERNAME }}  
+      run: |
+              docker login -u $USERNAME -p $PASSWORD  
+              docker run sugamdocker35/secretproj:${{ github.sha }}
+             
