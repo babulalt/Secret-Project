@@ -16,8 +16,8 @@ jobs:
       run: |
             
              docker login -u $USERNAME -p $PASSWORD
-             docker build -t surajmachamasi/secretproj:${{ github.sha }} -f Dockerfile .  
-             docker push surajmachamasi/secretproj:${{ github.sha }} 
+             docker build -t sugamdocker35/secretproj:${{ github.sha }} -f Dockerfile .  
+             docker push sugamdocker35/secretproj:${{ github.sha }} 
   deploy:
     runs-on: self-hosted
     steps:
@@ -27,7 +27,6 @@ jobs:
        PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
        USERNAME: ${{ secrets.DOCKER_USERNAME }}  
       run: |
-              docker login -u $USERNAME -p $PASSWORD
-              docker build -t surajmachamasi/secretproj:${{ github.sha }} -f Dockerfile .   
-              docker push surajmachamasi/secretproj:${{ github.sha }}
-              docker-compose  up -d 
+              docker login -u $USERNAME -p $PASSWORD  
+              docker run sugamdocker35/secretproj:${{ github.sha }}
+             
