@@ -9,15 +9,15 @@ jobs:
     runs-on: self-hosted
     steps:  
     - name: build_push_tag of feature/sj
-      if: contains('refs/heads/feature/sj',github.ref)
+      #if: contains('refs/heads/feature/sj',github.ref)
       env:      
        PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
        USERNAME: ${{ secrets.DOCKER_USERNAME }}  
       run: |
             
              docker login -u $USERNAME -p $PASSWORD
-             docker build -t sugamdocker35/secretproj:${{ github.sha }} -f Dockerfile .  
-             docker push sugamdocker35/secretproj:${{ github.sha }} 
+             docker build -t sugamdocker35/secretproj:1.0 -f Dockerfile .  
+             docker push sugamdocker35/secretproj:1.0 
   deploy:
     runs-on: self-hosted
     steps:
@@ -28,5 +28,5 @@ jobs:
        USERNAME: ${{ secrets.DOCKER_USERNAME }}  
       run: |
               docker login -u $USERNAME -p $PASSWORD  
-              docker run sugamdocker35/secretproj:${{ github.sha }}
+              docker run sugamdocker35/secretproj:1.0
              
