@@ -30,7 +30,7 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/secretproj:v1
   docker-deploy:
     needs: docker-push
-    runs-on: ubuntu-latest 
+    runs-on: self-hosted
     steps:
     - name: deploying app in self-hosted runner.
       env:
