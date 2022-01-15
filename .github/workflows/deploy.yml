@@ -23,7 +23,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/secretproj:v1
+          tags: ${{ secrets.DOCKER_USERNAME }}/secretproj:v1
   docker-deploy:
     needs: docker-push
     runs-on: self-hosted
