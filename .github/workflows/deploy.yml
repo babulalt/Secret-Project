@@ -20,10 +20,10 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: ./
+          context: .
           file: ./Dockerfile
           push: true
-          tags: sugamdocker35/secretproj:v1
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/secretproj:v1
   docker-deploy:
     needs: docker-push
     runs-on: self-hosted
