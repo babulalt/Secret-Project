@@ -17,7 +17,6 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/spf13/viper v1.7.1
 	github.com/stretchr/testify v1.7.0
-	github.com/techschool/simplebank v0.0.0-20210427142746-dba694c60f3f
 	github.com/ugorji/go v1.2.5 // indirect
 	golang.org/x/crypto v0.0.0-20210503195802-e9a32991a82e
 	golang.org/x/sys v0.0.0-20210503173754-0981d6026fa6 // indirect
