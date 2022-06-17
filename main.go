@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 
 	"github.com/berrybytes/simplesecrets/internal/controller/api"
@@ -11,11 +12,12 @@ import (
 )
 
 func main() {
-	config, err := util.LoadConfig(".")
-	if err != nil {
-		log.Fatal("Cannot load config", err)
-	}
-
+	// config, err := util.LoadConfig(".")
+	// if err != nil {
+	// 	log.Fatal("Cannot load config", err)
+	// }
+	config, err := util.LoadEnvConfig()
+	fmt.Println(config)
 	conn, err := sql.Open(config.DBDriver, config.DBSource)
 	if err != nil {
 		log.Fatal("Cannot connect to db", err)
