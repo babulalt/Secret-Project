@@ -11,6 +11,7 @@ import (
 
 type Config struct {
 	DBDriver            string        `mapstructure:"DB_DRIVER"`
+	Port           string        `mapstructure:"PORT"`
 	DBSource            string        `mapstructure:"DB_SOURCE"`
 	TokenSymmetricKey   string        `mapstructure:"TOKEN_SYMMETRIC_KEY"`
 	AccessTokenDuration time.Duration `mapstructure:"ACCESS_TOKEN_DURATION"`
@@ -40,6 +41,10 @@ func LoadEnvConfig() (config Config, err error) {
 	config.DBDriver = os.Getenv("DB_DRIVER")
 	config.DBSource = os.Getenv("DB_SOURCE")
 	config.AccessTokenDuration = 15
+	config.Port=os.Getenv("PORT")
+	if config.Port==""{
+		config.Port="8080"
+	}
 	config.TokenSymmetricKey = os.Getenv("TOKEN_SYMMETRIC_KEY")
 	return
 }
