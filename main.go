@@ -27,7 +27,7 @@ func main() {
 	if err != nil {
 		log.Fatal("Cannot create server : ", err)
 	}
-	err = server.Start(":3000")
+	err = server.Start(":8080")
 	if err != nil {
 		log.Fatal("cannot start server: ", err)
 	}
