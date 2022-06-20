@@ -7,5 +7,5 @@ import (
 )
 
 func (server *Server) home(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, "Welcome in home page."+ctx.Request.Host)
+	ctx.JSON(http.StatusOK, "Welcome in home page."+ctx.Request.RequestURI)
 }
